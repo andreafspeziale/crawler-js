@@ -23,7 +23,7 @@ function crawl() {
         else
             visitPage(nextPage, crawl);
     } else {
-        console.log('\n\nSite has been Crawled ' + new Date(Date.now()*1000).toString() + '\n\n');
+        console.log('\n\nSite has been Crawled ' + new Date(Date.now()).toString() + '\n\n');
         console.log('Instance of ' + SEARCH_WORD + ':\n' + instance + '\n\n');
         console.log('Page visited:\n');
         for(var k in pagesVisited)
