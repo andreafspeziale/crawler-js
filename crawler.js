@@ -2,7 +2,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var URL = require('url-parse');
 
-var START_URL = "https://github.com/andreafspeziale";
+var START_URL = "http://top-ix.org";
 var SEARCH_WORD = "streaming";
 
 var pagesVisited = {};
@@ -14,6 +14,7 @@ var baseUrl = url.protocol + "//" + url.hostname;
 pagesToVisit.push(START_URL);
 crawl();
 
+console.log('Starting Crawling ' + new Date(Date.now()).toString() + '\n\n');
 function crawl() {
     var nextPage = pagesToVisit.pop();
     if(nextPage != undefined) {
@@ -22,9 +23,11 @@ function crawl() {
         else
             visitPage(nextPage, crawl);
     } else {
-        console.log('Site has been Crawled');
-        console.log('Instance of ' + SEARCH_WORD + ': ' +instance);
-        console.log('Page visited', pagesVisited);
+        console.log('\n\nSite has been Crawled ' + new Date(Date.now()*1000).toString() + '\n\n');
+        console.log('Instance of ' + SEARCH_WORD + ':\n' + instance + '\n\n');
+        console.log('Page visited:\n');
+        for(var k in pagesVisited)
+            console.log(k);
     }
 }
 
